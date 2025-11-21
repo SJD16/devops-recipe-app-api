@@ -16,3 +16,9 @@ variable "contact" {
   description = "Contact name for tagging resources"
   default     = "SJ@ubuntux.com"
 }
+
+variable "aws_region" {
+  description = "AWS Region"
+  type        = string
+  default     = "us-east-2"  # Default region if no value is provided
+}
