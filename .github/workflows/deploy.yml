@@ -21,6 +21,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: extra Show environment variables
+        run: |
+          echo "AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}"
+          echo "AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}"
+          echo "AWS_SESSION_TOKEN=${{ secrets.AWS_SESSION_TOKEN }}"
+          echo "TF_WORKSPACE=${{ secrets.TF_WORKSPACE }}"
+          echo "AWS_DEFAULT_REGION=us-east-2"
+
       - name: extra Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
@@ -34,6 +42,12 @@ jobs:
           echo "AWS_SESSION_TOKEN=${{ secrets.AWS_SESSION_TOKEN }}" >> $GITHUB_ENV
           echo "AWS_DEFAULT_REGION=us-east-2" >> $GITHUB_ENV
           echo "TF_WORKSPACE=prod" >> $GITHUB_ENV  # Or staging, depending on your workspace
+          
+      - name: extra Check if Docker Compose can access the environment variables
+        run: |
+          docker-compose config  # This will show the resolved configuration from docker-compose.yml
+          docker-compose run terraform env  # Prints environment variables in the container
+
 
       - name: Set vars
         run: |
