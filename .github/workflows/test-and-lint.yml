@@ -39,7 +39,12 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Checkout
         uses: actions/checkout@v4
-
+      - name: Enable debug logs and run Terraform
+        run: |
+          # Enable Terraform debug logging
+          export TF_LOG=DEBUG
+          export TF_LOG_PATH=terraform_debug.log  # Optional: Write the logs to a file 
+          
       - name: Set up environment variables
         run: |
           echo "AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}" >> $GITHUB_ENV
