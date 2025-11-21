@@ -5,6 +5,7 @@ terraform {
       version = "5.23.0"
     }
   }
+
   backend "s3" {
     bucket               = "devops-recepie-app"
     key                  = "tf-state-deploy"
@@ -19,10 +20,10 @@ provider "aws" {
   region = "us-east-2"
   default_tags {
     tags = {
-      Environment  = terraform.workspace
-      Project    = var.project
-      Contact    = var.contact
-      ManageBy   = "Terraform/deploy"
+      Environment = terraform.workspace
+      Project     = var.project
+      Contact     = var.contact
+      ManageBy    = "Terraform/deploy"
     }
   }
 }

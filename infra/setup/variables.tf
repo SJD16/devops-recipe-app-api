@@ -4,7 +4,7 @@ variable "tf_state_bucket" {
 }
 
 variable "tf_state_lock_table" {
-  description = "Name of the DynamoDB table for TF state locking"
+  description = "Name of DynamoDB table for TF state locking"
   default     = "devops-recepie-app-lock"
 }
 
@@ -12,13 +12,8 @@ variable "project" {
   description = "Project name for tagging resources"
   default     = "recipe-app-api"
 }
+
 variable "contact" {
   description = "Contact name for tagging resources"
   default     = "SJ@ubuntux.com"
-}
-
-variable "aws_region" {
-  description = "AWS Region"
-  type        = string
-  default     = "us-east-2"  # Default region if no value is provided
 }

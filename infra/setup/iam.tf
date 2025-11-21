@@ -1,7 +1,6 @@
-
-####################################################################
-#  Create IAM user and policies for continuous Deploy (CD) account #
-####################################################################
+#######################################################################
+# Create IAM user and policies for Continuous Deployment (CD) account #
+#######################################################################
 
 resource "aws_iam_user" "cd" {
   name = "recipe-app-api-cd"
@@ -12,9 +11,9 @@ resource "aws_iam_access_key" "cd" {
 }
 
 
-####################################################################
-#  Policy for Terraform backend to S3 and Dynamo DBB access        #
-####################################################################
+#########################################################
+# Policy for Teraform backend to S3 and DynamoDB access #
+#########################################################
 
 data "aws_iam_policy_document" "tf_backend" {
   statement {
