@@ -1,12 +1,12 @@
 services:
   terraform:
     image: hashicorp/terraform:1.6.2
-    container_name: terraform
-    working_dir: /tf
+    
     volumes:
       - ./setup:/tf/setup
       - ./deploy:/tf/deploy
-    command: tail -f /dev/null
+    
+    working_dir: /tf
     environment:
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
