@@ -1,10 +1,11 @@
 name: Destroy
+
 on:
   workflow_dispatch:
     inputs:
       environment:
         type: choice
-        description: Which environment to remove AWS resource for?
+        description: Which environment to remove AWS resources for?
         options:
           - staging
           - prod
@@ -17,7 +18,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Terraform Destroy
-        env: 
+        env:
           AWS_ACCESS_KEY_ID: ${{ vars.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
