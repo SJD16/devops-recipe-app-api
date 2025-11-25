@@ -10,6 +10,7 @@ resource "aws_iam_access_key" "cd" {
   user = aws_iam_user.cd.name
 }
 
+
 #########################################################
 # Policy for Teraform backend to S3 and DynamoDB access #
 #########################################################
