@@ -10,7 +10,6 @@ resource "aws_iam_access_key" "cd" {
   user = aws_iam_user.cd.name
 }
 
-
 #########################################################
 # Policy for Teraform backend to S3 and DynamoDB access #
 #########################################################
@@ -151,7 +150,6 @@ resource "aws_iam_user_policy_attachment" "ec2" {
   policy_arn = aws_iam_policy.ec2.arn
 }
 
-
 #########################
 # Policy for RDS access #
 #########################
@@ -167,7 +165,8 @@ data "aws_iam_policy_document" "rds" {
       "rds:CreateDBInstance",
       "rds:DeleteDBInstance",
       "rds:ListTagsForResource",
-      "rds:ModifyDBInstance"
+      "rds:ModifyDBInstance",
+      "rds:AddTagsToResource"  # Add this line to allow tagging
     ]
     resources = ["*"]
   }
