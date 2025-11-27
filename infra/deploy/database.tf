@@ -15,7 +15,7 @@ resource "aws_db_subnet_group" "main" {
 }
 
 resource "aws_security_group" "rds" {
-  description = "Allow access to the RDS database instance"
+  description = "Allow access to the RDS database instance."
   name        = "${local.prefix}-rds-inbound-access"
   vpc_id      = aws_vpc.main.id
 
@@ -24,6 +24,7 @@ resource "aws_security_group" "rds" {
     from_port = 5432
     to_port   = 5432
   }
+
   tags = {
     Name = "${local.prefix}-db-security-group"
   }
@@ -39,7 +40,7 @@ resource "aws_db_instance" "main" {
   auto_minor_version_upgrade = true
   instance_class             = "db.t4g.micro"
   username                   = var.db_username
-  password                   = "PZUQ-6gq3"
+  password                   = var.db_password
   skip_final_snapshot        = true
   db_subnet_group_name       = aws_db_subnet_group.main.name
   multi_az                   = false
