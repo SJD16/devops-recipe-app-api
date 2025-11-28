@@ -203,6 +203,8 @@ data "aws_iam_policy_document" "ecs" {
       "ecs:CreateCluster",
       "ecs:UpdateCluster",
       "ecs:TagResource",
+      "iam:CreateServiceLinkedRole",  # Add this line
+      #"iam:GetServiceLinkedRoleDeletionStatus",  # Optional, if you need to manage role deletions
     ]
     resources = ["*"]
   }
