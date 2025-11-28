@@ -183,7 +183,7 @@ resource "aws_security_group" "ecs_service" {
   }
 }
 
-
+#added to deploy ecs service
 resource "aws_ecs_service" "api" {
   name                   = "${local.prefix}-api"
   cluster                = aws_ecs_cluster.main.name
