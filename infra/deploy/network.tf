@@ -110,9 +110,9 @@ resource "aws_subnet" "private_b" {
 }
 
 
-########################################################################
-# Endpoints to allow ECS to access ECR, CloudWatch and Systems Manager #
-########################################################################
+#########################################################################
+## Endpoints to allow ECS to access ECR, CloudWatch and Systems Manager #
+#########################################################################
 
 resource "aws_security_group" "endpoint_access" {
   description = "Access to endpoints"
