@@ -1,5 +1,5 @@
 ##
-# ECS Cluster for running app on Fargate. #
+# ECS Cluster for running app on Fargate.
 ##
 
 resource "aws_iam_policy" "task_execution_role_policy" {
@@ -163,7 +163,7 @@ resource "aws_security_group" "ecs_service" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  #RDS connectivity
+  # RDS connectivity
   egress {
     from_port = 5432
     to_port   = 5432
@@ -174,7 +174,7 @@ resource "aws_security_group" "ecs_service" {
     ]
   }
 
-  #HTTP inbound access
+  # HTTP inbound access
   ingress {
     from_port   = 8000
     to_port     = 8000
@@ -183,7 +183,6 @@ resource "aws_security_group" "ecs_service" {
   }
 }
 
-#added to deploy ecs service
 resource "aws_ecs_service" "api" {
   name                   = "${local.prefix}-api"
   cluster                = aws_ecs_cluster.main.name
