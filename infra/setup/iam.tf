@@ -188,7 +188,7 @@ resource "aws_iam_user_policy_attachment" "rds" {
 #########################
 # Custom ECS Task Execution Role (for ECS tasks)
 resource "aws_iam_role" "ecs_task_execution_role" {
-  name = "CustomECSTaskExecutionRole"
+  name = "ReciCustomECSTaskExecutionRole"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
