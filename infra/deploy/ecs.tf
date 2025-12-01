@@ -174,6 +174,7 @@ resource "aws_security_group" "ecs_service" {
     ]
   }
 
+  # HTTP inbound access
   ingress {
     from_port = 8000
     to_port   = 8000

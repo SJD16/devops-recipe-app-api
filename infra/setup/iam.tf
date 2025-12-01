@@ -165,8 +165,7 @@ data "aws_iam_policy_document" "rds" {
       "rds:CreateDBInstance",
       "rds:DeleteDBInstance",
       "rds:ListTagsForResource",
-      "rds:ModifyDBInstance",
-      "rds:AddTagsToResource" # Add this line to allow tagging
+      "rds:ModifyDBInstance"
     ]
     resources = ["*"]
   }
@@ -203,8 +202,6 @@ data "aws_iam_policy_document" "ecs" {
       "ecs:CreateCluster",
       "ecs:UpdateCluster",
       "ecs:TagResource",
-      "iam:CreateServiceLinkedRole",
-      "iam:GetServiceLinkedRoleDeletionStatus",
     ]
     resources = ["*"]
   }
