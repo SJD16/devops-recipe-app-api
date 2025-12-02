@@ -354,6 +354,21 @@ data "aws_iam_policy_document" "efs" {
     ]
     resources = ["*"]
   }
+  # Required EC2 networking permissions for EFS mount targets
+  statement {
+    effect = "Allow"
+    actions = [
+      "ec2:CreateNetworkInterface",
+      "ec2:DeleteNetworkInterface",
+      "ec2:DescribeNetworkInterfaces",
+      "ec2:DescribeSubnets",
+      "ec2:DescribeVpcs",
+      "ec2:DescribeSecurityGroups",
+      "ec2:ModifyNetworkInterfaceAttribute",
+      "ec2:DescribeAvailabilityZones"
+    ]
+    resources = ["*"]
+  }
 }
 
 resource "aws_iam_policy" "efs" {
