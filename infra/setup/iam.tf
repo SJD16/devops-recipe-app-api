@@ -351,13 +351,7 @@ data "aws_iam_policy_document" "efs" {
       "elasticfilesystem:CreateAccessPoint",
       "elasticfilesystem:CreateFileSystem",
       "elasticfilesystem:TagResource",
-    ]
-    resources = ["*"]
-  }
-  # Required EC2 networking permissions for EFS mount targets
-  statement {
-    effect = "Allow"
-    actions = [
+
       "ec2:CreateNetworkInterface",
       "ec2:DeleteNetworkInterface",
       "ec2:DescribeNetworkInterfaces",
@@ -365,7 +359,7 @@ data "aws_iam_policy_document" "efs" {
       "ec2:DescribeVpcs",
       "ec2:DescribeSecurityGroups",
       "ec2:ModifyNetworkInterfaceAttribute",
-      "ec2:DescribeAvailabilityZones"
+      "ec2:DescribeAvailabilityZones",
     ]
     resources = ["*"]
   }
@@ -381,7 +375,6 @@ resource "aws_iam_user_policy_attachment" "efs" {
   user       = aws_iam_user.cd.name
   policy_arn = aws_iam_policy.efs.arn
 }
-
 
 #############################
 # Policy for Route53 access #
@@ -419,4 +412,5 @@ resource "aws_iam_policy" "route53" {
 resource "aws_iam_user_policy_attachment" "route53" {
   user       = aws_iam_user.cd.name
   policy_arn = aws_iam_policy.route53.arn
-} 
+}
+
